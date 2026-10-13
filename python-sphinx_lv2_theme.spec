@@ -3,15 +3,15 @@
 Summary:		A minimal pure-CSS theme for Sphinx
 Name: 		python-%{pyname}
 Version:		1.4.6
-Release:		1
+Release:		2
 License:		ISC
 Group:	Development/python
 Url:		https://gitlab.com/lv2/sphinx_lv2_theme
 Source0:        https://gitlab.com/lv2/sphinx_lv2_theme/-/archive/v%{version}/%{pyname}-v%{version}.tar.bz2
 BuildRequires:		python
-BuildRequires:		python-setuptools
-BuildRequires:		python-setuptools_scm
-BuildRequires:		python-sphinx
+BuildRequires:		python%{pyver}dist(setuptools)
+BuildRequires:		python%{pyver}dist(setuptools-scm)
+BuildRequires:		python%{pyver}dist(sphinx)
 #BuildRequires:	pkgconfig(python3)
 BuildArch:		noarch
 
@@ -34,6 +34,7 @@ documented using the standard Sphinx domains.
 
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %py_build
 
 
